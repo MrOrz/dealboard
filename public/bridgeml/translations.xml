@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<table xmlns="http://www.thomasoandrews.com/xmlns/bridge/trans"
+       xmlns:bridge="http://www.thomasoandrews.com/xmlns/bridge">
+
+<!-- Copyright 2002, Thomas Andrews, thomaso@best.com -->
+
+<!--
+The XSL processors use this file for determining certain formatting
+conditions
+-->
+
+<auctions defaultdealer="dealer"/>
+
+<!-- 
+Card faces: 
+  Note that the "short" attribute is used when placing a card
+  in a holding, but if there is no "short" attribute, it uses the
+  ID.   Allows internationalization, eventually.
+-->
+<card id="A">ace</card>
+<card id="K">king</card>
+<card id="Q">queen</card>
+<card id="J">jack</card>
+<card id="T" short="10">10</card>
+<card id="9">nine</card>
+<card id="8">eight</card>
+<card id="7">seven</card>
+<card id="6">six</card>
+<card id="5">five</card>
+<card id="4">four</card>
+<card id="3">three</card>
+<card id="2">two</card>
+
+<!-- Suits and Notrump -->
+<!-- Color can only be black or red -->
+<denom id="S" symbol="&#x2660;" color="black">spade</denom>
+<denom id="H" symbol="&#x2665;" color="red">heart</denom>
+<denom id="D" symbol="&#x2666;" color="red">diamond</denom>
+<denom id="C" symbol="&#x2663;" color="black">club</denom>
+<denom id="NT" symbol="NT">notrump</denom>
+<denom id="N" symbol="NT">notrump</denom>
+
+
+<!-- Names for various seats -->
+<seatname id="W" ucase="West" lcase="west"/>
+<seatname id="N" ucase="North" lcase="north"/>
+<seatname id="E" ucase="East" lcase="east"/>
+<seatname id="S" ucase="South" lcase="south"/>
+
+<seatname id="dealer" ucase="Dealer" lcase="dealer"/>
+<seatname id="LHO" ucase="LHO" lcase="LHO"/>
+<seatname id="partner" ucase="Partner" lcase="partner"/>
+<seatname id="RHO" ucase="RHO" lcase="RHO"/>
+
+<!-- Just a dummy lookup -->
+<vul id="East/West">E-W</vul>
+<vul id="North/South">N-S</vul>
+<vul id="E/W">E-W</vul>
+<vul id="N/S">N-S</vul>
+
+<!-- Determines which hand is to the left
+     based on the dealer. -->
+<leftmost dealer="W" left="W" gap="0"/>
+<leftmost dealer="S" left="S" gap="0"/>
+<leftmost dealer="E" left="W" gap="2"/>
+<leftmost dealer="N" left="W" gap="1"/>
+
+<!-- default case -->
+<leftmost dealer="dealer" left="dealer" gap="0"/>
+
+<!-- Info about non-bid calls -->
+<call id="P">
+<context id="inline">P</context>
+<context id="default">Pass</context>
+</call>
+
+<call id="?">
+<context id="default">?</context>
+</call>
+
+<call id="X">
+<context id="word">Double</context>
+<context id="inline">X</context>
+<context id="contract">x</context>
+<context id="default">Dbl</context>
+</call>
+
+<call id="XX">
+<context id="word">Redouble</context>
+<context id="inline">XX</context>
+<context id="contract">xx</context>
+<context id="default">Rdbl</context>
+</call>
+
+
+<!-- All stuff afterwards is internal stuff - do not change -->
+
+<gaps>
+<bridge:call code="_empty_"/>
+<bridge:call code="_empty_"/>
+<bridge:call code="_empty_"/>
+<bridge:call code="_empty_"/>
+</gaps>
+
+<!-- This is a dummy call, replacing four-pass auctions -->
+<call id="_PO_">
+<bridge:call code="_PO_"/>
+<context id="default">Pass Out</context>
+</call>
+
+<!-- This is a dummy call, replacing the last three passes in an auction -->
+<call id="_AP_">
+<bridge:call code="_AP_"/> <!-- For addition to ends of auctions -->
+<context id="short">AP</context>
+<context id="default">All Pass</context>
+</call>
+
+<call id="_empty_">
+<bridge:call code="_empty_"/> <!-- For addition to ends of auctions -->
+<context id="short"></context>
+<context id="default"></context>
+</call>
+
+<call id="_skip_">
+<bridge:call code="_skip_"/>
+<context id="default">&#x2014;</context>
+</call>
+
+<bidding>
+<case dealer="E" hands="NS"/>
+<case dealer="W" hands="NS"/>
+<case dealer="N" hands="EW"/>
+<case dealer="S" hands="EW"/>
+<showbid show="optional"/><showbid/>
+<showbid show="optional"/><showbid/>
+</bidding>
+
+<bidding>
+<case dealer="N" hands="NS"/>
+<case dealer="S" hands="NS"/>
+<case dealer="E" hands="EW"/>
+<case dealer="W" hands="EW"/>
+<showbid/><showbid show="optional"/>
+<showbid/><showbid show="optional"/>
+</bidding>
+
+<bidding hands="all">
+<showbid/><showbid/><showbid/><showbid/>
+</bidding>
+
+<!-- 
+Seats, in order.  When auction starts with seat 'N', XSL finds
+the seat in this set which patches 'N' and takes it and the next
+three to represent the bidding order.
+-->
+<seats>
+<seat id="W"/>
+<seat id="N"/>
+<seat id="E"/>
+<seat id="S"/>
+<seat id="W"/>
+<seat id="N"/>
+<seat id="E"/>
+</seats>
+
+<seats>
+<seat id="dealer"/>
+<seat id="LHO"/>
+<seat id="partner"/>
+<seat id="RHO"/>
+</seats>
+
+</table>

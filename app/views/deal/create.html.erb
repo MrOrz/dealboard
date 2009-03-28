@@ -1,0 +1,22 @@
+<%= error_messages_for :deal %>
+<% form_for :deal, :url => {:action => 'create'} do |f| -%>
+<p>Title: <%= f.text_field :title, :size => 20 %></p>
+<p>Tag: <%= text_field_tag :tag, nil, :size => 21 %></p>
+<p>North: <br /> S: <%= f.text_field :ns, :size => 13 %>
+<br /> H: <%= f.text_field :nh, :size => 13 %>
+<br /> D: <%= f.text_field :nd, :size => 13 %>
+<br /> C: <%= f.text_field :nc, :size => 13 %></p>
+<p>East: <br /> S: <%= f.text_field :es, :size => 13 %>
+<br /> H: <%= f.text_field :eh, :size => 13 %>
+<br /> D: <%= f.text_field :ed, :size => 13 %>
+<br /> C: <%= f.text_field :ec, :size => 13 %></p>
+<p>South: <br /> S: <%= f.text_field :ss, :size => 13 %>
+<br /> H: <%= f.text_field :sh, :size => 13 %>
+<br /> D: <%= f.text_field :sd, :size => 13 %>
+<br /> C: <%= f.text_field :sc, :size => 13 %></p>
+<p>West: <br /> S: <%= f.text_field :ws, :size => 13 %>
+<br /> H: <%= f.text_field :wh, :size => 13 %>
+<br /> D: <%= f.text_field :wd, :size => 13 %>
+<br /> C: <%= f.text_field :wc, :size => 13 %></p>
+<p><%= submit_tag %></p>
+<% end -%>

@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CodeBoard::<%=h @title %></title>
+<%= stylesheet_link_tag 'main' %>
+<%= javascript_include_tag :defaults %>
+<%= yield :header %>
+</head>
+<body>
+<p><%= link_to "List", :action => "list" %>&nbsp;&nbsp;&nbsp;
+<% if logged_in? -%>
+<%= link_to "Create", :action => "create" %>&nbsp;&nbsp;&nbsp;
+<%= link_to "Logout", :controller => "account", :action => "logout" %>
+<% else -%>
+Not logged in? You can <%= link_to "log in", :controller => "account", :action => "login" %> or <%= link_to "sign up", :controller => "account", :action => "signup" %>
+<% end -%></p>
+<% if flash[:notice] -%>
+<p id="notice"><%= flash[:notice] %></p>
+<% end -%>
+<%= yield :layout %>
+</body>
+</html>

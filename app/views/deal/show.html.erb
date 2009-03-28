@@ -1,0 +1,32 @@
+<p><span id="key">Title:</span> <%= @deal.title %><br />
+<span id="key">User:</span> <%= link_to @deal.user.login, :action => 'user', :id => @deal.user.login %><br />
+<span id="key">Tag:</span> <% for t in @deal.tags -%>
+<span id="key">Dealer:</span> <%= @deal.dealer %><br />
+<span id="key">Vulnerable: </span> <%= @dealer.vul %><br />
+<%= link_to t.name, :action => "tag", :id => t.name %> 
+<% end -%></p>
+<p style="text-align: right;">
+<% if current_user == @deal.user -%>
+&nbsp;&nbsp;&nbsp;<%= link_to "Edit", :action => "edit", :id => h(@deal.url) %>&nbsp;&nbsp;&nbsp;
+<%= link_to "Delete", :action => "delete", :id => h(@deal.url) %>
+<% end -%></p>
+<blockquote>
+<% if @deal.comments.count > 0 -%>
+<p id="notice"><%= @deal.comments.count %> comment(s)</p>
+<% for c in @deal.comments -%>
+<p><span id="key">User:</span> <%= link_to c.user.login, :action => "user", :id => c.user.login %>&nbsp;&nbsp;&nbsp;<span id="key">User:</span><%= c.created_at.to_s %><% if c.user == current_user %>&nbsp;&nbsp;&nbsp;<%= link_to "Delete", :action => "deletecomment", :id => c.id %><% end %>
+<div id="comment"><%= simple_format(h(c.body)) %></div>
+<% end -%>
+<% else -%>
+<p id="notice">No comments yet.</p>
+<% end -%>
+<% if logged_in? -%>
+<p id="notice">You can leave a message. User: <%= current_user.login %></p>
+<%= error_messages_for :comment %>
+<% form_for :comment, :url => {:action => 'show', :id => params[:id]} do |f| -%>
+<%= f.text_area :body, :rows => "5" %>
+<%= submit_tag %>
+<% end -%>
+<% else -%>
+<p id="notice">Please <%= link_to "log in", :controller => "account", :action => "login" %> to comment on this deal.</p>
+<% end -%></blockquote>

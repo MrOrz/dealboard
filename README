@@ -1,0 +1,10 @@
+Dealboard - a rails application for bridge deals
+
+Feature expected:
+
+1. Showing the deal
+2. Showing bidding sequence
+3. Commentable
+4. Double Dummy Analysis
+5. KRP calculation
+6. Taggable

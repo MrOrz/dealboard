@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+
+a:link,a:visited{
+  font-size: 20px;
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+	color: #ff6100;
+	text-decoration: none;	
+}
+
+a:hover,a:active{
+  font-size: 20px;
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+	color: #ff2f6a;
+	text-decoration: none;
+	border-bottom-width: thin;
+	border-bottom-color: #330000;
+}
+
+body{
+  background-color: #232323;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 100px;
+}
+
+p{
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+  color: white;
+  font-size: 20px;
+}
+
+#key{
+  color: #00d8ff
+}
+
+#by{
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+  color: black;
+  font-size: 20px;
+}
+
+#notice, h2, li{
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+  color: #fce94f;
+  font-size: 20px;
+}
+
+#comment{
+  background-color: #5C5C5C;
+  color: #5C5C5C;
+}
+
+input[type="text"], input[type="password"]{
+	display: inline;	
+	border: none;  font-size: 20px;
+}
+
+input[type="submit"], textarea{
+	font-size: 20px;
+	border: thin solid #DBCDC1;
+	background-color: #FFFFFF;	
+}
+
+tr{
+  background-color: #FFFFFF;
+}
+
+table{
+  border: 0;
+  width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#fieldWithErrors{
+  border: none;
+  padding: 2px;
+  display: inline;
+  font-family: "Consolas", "Courier New", Courier, mono, serif;
+  color: white;
+}
