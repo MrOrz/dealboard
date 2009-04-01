@@ -3,7 +3,7 @@
 <% end -%>
 <table>
 <% for c in @deal -%>
-<tr><td><%= link_to h(c.title), :action => "show", :id => h(c.url) %></td><td>&nbsp;&nbsp;<span id="by">By: <%= link_to h(c.user.login), :action => "user", :id => h(c.user.login) %></span>&nbsp;&nbsp;Tag: <% for t in c.tags -%>
+<tr><td><%= link_to h(c.title), :action => "show", :id => c.id %></td><td>&nbsp;&nbsp;<span id="by">By: <%= link_to h(c.user.login), :action => "user", :id => h(c.user.login) %></span>&nbsp;&nbsp;Tag: <% for t in c.tags -%>
 <%= link_to t.name, :action => "tag", :id => t.name %> 
 <% end -%></td></tr>
 <% end -%>
