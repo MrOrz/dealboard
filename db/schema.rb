@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -11,20 +11,35 @@
 
 ActiveRecord::Schema.define(:version => 4) do
 
-  create_table "codes", :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.text     "code"
-    t.string   "title"
-    t.string   "language"
-    t.string   "url"
+    t.integer  "deal_id"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comments", :force => true do |t|
+  create_table "deals", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "code_id"
-    t.text     "body"
+    t.string   "title"
+    t.string   "ns"
+    t.string   "nh"
+    t.string   "nd"
+    t.string   "nc"
+    t.string   "es"
+    t.string   "eh"
+    t.string   "ed"
+    t.string   "ec"
+    t.string   "ss"
+    t.string   "sh"
+    t.string   "sd"
+    t.string   "sc"
+    t.string   "ws"
+    t.string   "wh"
+    t.string   "wd"
+    t.string   "wc"
+    t.string   "dealer"
+    t.string   "vul"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

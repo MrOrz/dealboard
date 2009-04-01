@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
   
-  has_many :codes
+  has_many :deals
   has_many :comments
   acts_as_tagger
 

@@ -80,3 +80,243 @@ table{
   font-family: "Consolas", "Courier New", Courier, mono, serif;
   color: white;
 }
+
+div#toc {
+background:transparent url(http://thomaso.best.vwh.net/graphics/idealbg.jpg) repeat scroll 0 0;
+}
+table.prevandnext {
+background:#CCCCEE none repeat scroll 0 0;
+color:inherit;
+}
+div.diagheader {
+background:#FFFFDD none repeat scroll 0 0;
+}
+span.played {
+color:#3333FF;
+}
+table.hand span.redsuit, table.auctiontable span.redsuit {
+-moz-background-clip:inherit;
+-moz-background-inline-policy:inherit;
+-moz-background-origin:inherit;
+background:inherit inherit inherit inherit inherit;
+color:#CC0000;
+}
+span.blacksuit {
+-moz-background-clip:inherit;
+-moz-background-inline-policy:inherit;
+-moz-background-origin:inherit;
+background:inherit inherit inherit inherit inherit;
+color:black;
+}
+span.forcered span.redsuit {
+color:#FF0000;
+}
+span.redsuit {
+-moz-background-clip:inherit;
+-moz-background-inline-policy:inherit;
+-moz-background-origin:inherit;
+background:inherit inherit inherit inherit inherit;
+color:#CC0000;
+font-family:"Courier New",Courier,monospace;
+}
+span.blacksuit {
+-moz-background-clip:inherit;
+-moz-background-inline-policy:inherit;
+-moz-background-origin:inherit;
+background:inherit inherit inherit inherit inherit;
+color:black;
+font-family:"Courier New",Courier,monospace;
+}
+pre.testcode {
+background:#CCCCFF none repeat scroll 0 0;
+}
+
+table.prevandnext {
+border-bottom:1px solid black;
+border-top:1px solid black;
+color:inherit;
+font-size:smaller;
+margin:0;
+padding:0;
+width:100%;
+}
+table.prevandnext tr td.middle {
+margin:0;
+padding:0;
+text-align:center;
+width:40%;
+}
+table.prevandnext tr td div.signature {
+border:0 none;
+margin:0;
+padding:0;
+}
+table.prevandnext tr td.prev {
+text-align:left;
+width:30%;
+}
+table.prevandnext tr td.next {
+text-align:right;
+width:30%;
+}
+table.prevandnext tr td a {
+text-decoration:none;
+}
+body.toc a {
+text-decoration:none;
+}
+div.paragraph {
+margin-top:1em;
+}
+table.datatable {
+margin-left:auto;
+margin-right:auto;
+}
+div.body {
+clear:left;
+padding-bottom:1em;
+padding-left:5%;
+padding-right:5%;
+width:90%;
+}
+div.tocsignature {
+border-top:1px solid;
+font-size:smaller;
+padding-top:1ex;
+text-align:right;
+}
+div.signature {
+border-top:thin groove;
+font-size:smaller;
+padding-bottom:1em;
+padding-top:1em;
+text-align:center;
+}
+div.tocindex {
+border-top:thin groove;
+font-size:smaller;
+}
+div.tocentry {
+margin-bottom:0.2em;
+margin-left:2em;
+text-indent:-1em;
+}
+span.tag {
+color:red;
+font-weight:bold;
+}
+div.diagheader {
+border:thin outset;
+font-size:smaller;
+padding-left:1.5em;
+text-indent:-1em;
+vertical-align:top;
+width:16ex;
+}
+div.handheader {
+border-bottom:1px solid;
+font-size:smaller;
+margin-left:auto;
+margin-right:auto;
+padding-bottom:3px;
+text-align:center;
+}
+span.played {
+font-size:large;
+font-weight:bold;
+}
+span.holding, span.call, span.contract {
+white-space:nowrap;
+}
+table.hand, table.deal, table.dealwithheader {
+border:0 none;
+padding:0;
+}
+table.dealwithheader tr td.diagramheader {
+margin:0;
+padding:0 1ex 0 0;
+text-align:left;
+vertical-align:top;
+}
+div.dealer, div.vul, div.scoring, div.source {
+margin-bottom:2px;
+margin-top:0;
+}
+table.hand tr td {
+border:0 none;
+margin:0;
+padding:0;
+}
+table.deal {
+margin-bottom:1ex;
+margin-top:1ex;
+width:60ex;
+}
+table.dealwithheader {
+margin-bottom:1ex;
+margin-top:1ex;
+width:60ex;
+}
+div.test {
+border-top:thin groove;
+margin-top:1em;
+}
+pre.testcode {
+border:thin groove;
+margin-left:10px;
+margin-right:10px;
+padding-left:10px;
+padding-right:10px;
+width:auto;
+}
+div.testoutput {
+border:thin groove;
+margin-left:10px;
+margin-right:10px;
+padding:10px;
+}
+div.testnote {
+padding-top:1em;
+}
+pre.auction {
+}
+table.deal tr td, table.deawithheader tr td {
+margin:0;
+padding:0;
+}
+td.auctionannotation div {
+font-size:smaller;
+font-style:italic;
+margin:1ex 1em;
+}
+table.auctiontable {
+margin-left:1em;
+width:16em;
+}
+table.auctiontable tr.heading td {
+font-style:italic;
+padding-bottom:0;
+vertical-align:top;
+}
+table.auctiontable tr td {
+padding:0;
+text-align:left;
+width:25%;
+}
+table.auctiontable tr {
+vertical-align:bottom;
+}
+table.auctionplusnotes td.notes {
+padding-top:1ex;
+width:auto;
+}
+div.auctionnote {
+font-size:80%;
+margin-left:2em;
+padding-top:2px;
+text-indent:-1em;
+}
+span.footnotetag {
+font-size:80%;
+vertical-align:super;
+}

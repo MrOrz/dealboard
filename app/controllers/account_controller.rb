@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   # say something nice, you goof!  something sweet.
-  layout 'code'
+  layout 'deal'
   
   def index
     redirect_to(:action => 'signup') unless logged_in? || User.count > 0
@@ -14,7 +14,7 @@ class AccountController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(:controller => 'code', :action => 'list')
+      redirect_back_or_default(:controller => 'deal', :action => 'list')
       flash[:notice] = "Logged in successfully"
     end
   end
@@ -24,7 +24,7 @@ class AccountController < ApplicationController
     return unless request.post?
     @user.save!
     self.current_user = @user
-    redirect_back_or_default(:controller => 'code', :action => 'list')
+    redirect_back_or_default(:controller => 'deal', :action => 'list')
     flash[:notice] = "Thanks for signing up!"
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'

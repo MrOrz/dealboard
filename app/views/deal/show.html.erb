@@ -1,15 +1,110 @@
 <p><span id="key">Title:</span> <%= @deal.title %><br />
 <span id="key">User:</span> <%= link_to @deal.user.login, :action => 'user', :id => @deal.user.login %><br />
 <span id="key">Tag:</span> <% for t in @deal.tags -%>
-<span id="key">Dealer:</span> <%= @deal.dealer %><br />
-<span id="key">Vulnerable: </span> <%= @dealer.vul %><br />
 <%= link_to t.name, :action => "tag", :id => t.name %> 
-<% end -%></p>
+<% end -%><br />
+<span id="key">Dealer:</span> <%= @deal.dealer %><br />
+<span id="key">Vulnerable: </span> <%= @deal.vul %></p>
 <p style="text-align: right;">
 <% if current_user == @deal.user -%>
-&nbsp;&nbsp;&nbsp;<%= link_to "Edit", :action => "edit", :id => h(@deal.url) %>&nbsp;&nbsp;&nbsp;
-<%= link_to "Delete", :action => "delete", :id => h(@deal.url) %>
+&nbsp;&nbsp;&nbsp;<%= link_to "Edit", :action => "edit", :id => @deal.id %>&nbsp;&nbsp;&nbsp;
+<%= link_to "Delete", :action => "delete", :id => @deal.id %>
 <% end -%></p>
+
+<table class="deal">
+<colgroup span="10" width="10%"></colgroup>
+<tr class="north">
+<td valign="bottom" colspan="3"></td>
+<td valign="bottom" colspan="4" class="north"><table class="hand">
+<tr>
+<td align="center"><span class="blacksuit">♠</span></td>
+
+<td><span class="holding"><%= @deal.ns %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♥</span></td>
+<td><span class="holding"><%= @deal.nh %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♦</span></td>
+<td><span class="holding"><%= @deal.nd %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="blacksuit">♣</span></td>
+
+<td><span class="holding"><%= @deal.nc %></span></td>
+</tr>
+</table></td>
+<td colspan="3"></td>
+</tr>
+<tr class="eastwest">
+<td align="left" colspan="4" class="west"><table class="hand">
+<tr>
+<td align="center"><span class="blacksuit">♠</span></td>
+<td><span class="holding"><%= @deal.ws %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♥</span></td>
+
+<td><span class="holding"><%= @deal.wh %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♦</span></td>
+<td><span class="holding"><%= @deal.wd %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="blacksuit">♣</span></td>
+<td><span class="holding"><%= @deal.wc %></span></td>
+</tr>
+</table></td>
+<td colspan="2"> </td>
+
+<td align="left" colspan="4" class="east"><table class="hand">
+<tr>
+<td align="center"><span class="blacksuit">♠</span></td>
+<td><span class="holding"><%= @deal.es %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♥</span></td>
+<td><span class="holding"><%= @deal.eh %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♦</span></td>
+<td><span class="holding"><%= @deal.ed %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="blacksuit">♣</span></td>
+<td><span class="holding"><%= @deal.ec %></span></td>
+</tr>
+</table></td>
+</tr>
+<tr class="south">
+<td valign="bottom" colspan="3"></td>
+<td valign="top" colspan="4" class="south"><table class="hand">
+<tr>
+<td align="center"><span class="blacksuit">♠</span></td>
+<td><span class="holding"><%= @deal.ss %></span></td>
+
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♥</span></td>
+<td><span class="holding"><%= @deal.sh %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="redsuit">♦</span></td>
+<td><span class="holding"><%= @deal.sd %></span></td>
+</tr>
+<tr>
+<td align="center"><span class="blacksuit">♣</span></td>
+<td><span class="holding"><%= @deal.sc %></span></td>
+</tr>
+</table></td>
+<td colspan="3"></td>
+</tr>
+</table>
+</div>
+
+
 <blockquote>
 <% if @deal.comments.count > 0 -%>
 <p id="notice"><%= @deal.comments.count %> comment(s)</p>

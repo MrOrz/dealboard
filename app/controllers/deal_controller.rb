@@ -7,7 +7,7 @@ class DealController < ApplicationController
   end
 
   def show
-    @deal = Deal.find_by_url(params[:id])
+    @deal = Deal.find(params[:id])
     @title = @deal.title
     if request.post?
       @comment = current_user.comments.build(params[:comment])
@@ -32,10 +32,10 @@ class DealController < ApplicationController
     if request.post?
       @deal = current_user.deals.build(params[:deal])
       @deal.tag_list = params[:tag]
-      @deal.url = @deal.to_url
+      #@deal.url = @deal.to_url
       if @deal.save
         flash[:notice] = "Successfully created..."
-        redirect_to :action => "show", :id => @deal.url
+        redirect_to :action => "show", :id => @deal.id
       else
         render :action => 'create'
       end
