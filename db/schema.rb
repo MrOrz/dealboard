@@ -9,12 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "deal_id"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ddas", :force => true do |t|
+    t.integer  "deal_id"
+    t.string   "n"
+    t.string   "e"
+    t.string   "w"
+    t.string   "s"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
