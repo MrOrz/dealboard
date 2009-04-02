@@ -32,6 +32,8 @@ class DealController < ApplicationController
     if request.post?
       @deal = current_user.deals.build(params[:deal])
       @deal.tag_list = params[:tag]
+      @dda = @deal.dda.create
+      @dda.generate
       #@deal.url = @deal.to_url
       if @deal.save
         flash[:notice] = "Successfully created..."

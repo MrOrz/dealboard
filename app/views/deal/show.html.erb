@@ -103,7 +103,21 @@
 </tr>
 </table>
 </div>
-
+<table class="doubledummy">
+<tr><td>&nbsp;</td><td>♣</td><td>♦</td><td>♥</td><td>♠</td><td>NT</td></tr>
+<tr><td>N</td><% @deal.dda.n.split.each do |s| -%>
+<td><%= s %></td>
+<% end -%></tr>
+<tr><td>S</td><% @deal.dda.s.split.each do |s| -%>
+<td><%= s %></td>
+<% end -%></tr>
+<tr><td>E</td><% @deal.dda.e.split.each do |s| -%>
+<td><%= s %></td>
+<% end -%></tr>
+<tr><td>W</td><% @deal.dda.w.split.each do |s| -%>
+<td><%= s %></td>
+<% end -%></tr>
+</table>
 
 <blockquote>
 <% if @deal.comments.count > 0 -%>
