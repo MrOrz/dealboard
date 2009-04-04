@@ -1,0 +1,39 @@
+table.deal, table.doubledummy {
+  border-spacing: 0px;
+}
+
+table.deal tr td, table.deawithheader tr td {
+  margin: 0;
+  padding: 0;
+}
+
+table.hand, table.deal, table.dealwithheader {
+  border: 0 none;
+  padding: 0;
+}
+
+span.holding, span.call, span.contract, table.doubledummy {
+  white-space: nowrap;
+  font-size: 20px;
+  font-family: "Consolas", "Courier New", Courier, mono, serif
+}
+
+table.hand span.blacksuit, table.auctiontable span.blacksuit, table.doubledummy span.blacksuit {
+  -moz-background-clip: inherit;
+  -moz-background-inline-policy: inherit;
+  -moz-background-origin: inherit;
+  background:inherit inherit inherit inherit inherit;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+}
+
+table.hand span.redsuit, table.auctiontable span.redsuit, table.doubledummy span.redsuit {
+  -moz-background-clip: inherit;
+  -moz-background-inline-policy: inherit;
+  -moz-background-origin: inherit;
+  background: inherit inherit inherit inherit inherit;
+  color: #CC0000;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+}
