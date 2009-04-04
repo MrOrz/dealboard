@@ -1,3 +1,6 @@
+<% content_for :header do -%>
+<%= javascript_include_tag "deal/checkhand" %>
+<% end -%>
 <%= error_messages_for :deal %>
 <% form_for :deal, :url => {:action => 'create'} do |f| -%>
 <%= render :partial => "form", :locals => {:f => f} %>

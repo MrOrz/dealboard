@@ -1,3 +1,6 @@
+<% content_for :header do -%>
+<%= stylesheet_link_tag 'deal' %>
+<% end -%>
 <p><span id="key">Title:</span> <%= @deal.title %><br />
 <span id="key">User:</span> <%= link_to @deal.user.login, :action => 'user', :id => @deal.user.login %><br />
 <span id="key">Tag:</span> <% for t in @deal.tags -%>
@@ -12,7 +15,6 @@
 <% end -%></p>
 
 <table class="deal">
-<colgroup span="10" width="10%"></colgroup>
 <tr class="north">
 <td valign="bottom" colspan="3"></td>
 <td valign="bottom" colspan="4" class="north"><table class="hand">
@@ -104,8 +106,10 @@
 </table>
 </div>
 <% if @deal.dda.n -%>
+<p><span id="key">Double Dummy Analysis:</span>
 <table class="doubledummy">
-<tr><td>&nbsp;</td><td>♣</td><td>♦</td><td>♥</td><td>♠</td><td>NT</td></tr>
+<tr><td>&nbsp;</td><td><span class="blacksuit">♣</span></td><td><span class="redsuit">♦</span></td>
+<td><span class="redsuit">♥</span></td><td><span class="blacksuit">♠</span></td><td>NT</td></tr>
 <tr><td>N</td><% @deal.dda.n.split.each do |s| -%>
 <td><%= s %></td>
 <% end -%></tr>
@@ -118,7 +122,7 @@
 <tr><td>W</td><% @deal.dda.w.split.each do |s| -%>
 <td><%= s %></td>
 <% end -%></tr>
-</table>
+</table></p>
 <% end -%>
 <blockquote>
 <% if @deal.comments.count > 0 -%>

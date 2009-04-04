@@ -2,19 +2,19 @@
 <p>Tag: <%= text_field_tag :tag, nil, :size => 21 %></p>
 <p>Dealer: <%= f.select :dealer, ['N', 'E', 'S', 'W'] %></p>
 <p>Vulnerable: <%= f.select :vul, ['None', 'NS', 'EW', 'Both'] %></p>
-<p>North: <br /> S: <%= f.text_field :ns, :size => 13 %>
-<br /> H: <%= f.text_field :nh, :size => 13 %>
-<br /> D: <%= f.text_field :nd, :size => 13 %>
-<br /> C: <%= f.text_field :nc, :size => 13 %></p>
-<p>East: <br /> S: <%= f.text_field :es, :size => 13 %>
-<br /> H: <%= f.text_field :eh, :size => 13 %>
-<br /> D: <%= f.text_field :ed, :size => 13 %>
-<br /> C: <%= f.text_field :ec, :size => 13 %></p>
-<p>South: <br /> S: <%= f.text_field :ss, :size => 13 %>
-<br /> H: <%= f.text_field :sh, :size => 13 %>
-<br /> D: <%= f.text_field :sd, :size => 13 %>
-<br /> C: <%= f.text_field :sc, :size => 13 %></p>
-<p>West: <br /> S: <%= f.text_field :ws, :size => 13 %>
-<br /> H: <%= f.text_field :wh, :size => 13 %>
-<br /> D: <%= f.text_field :wd, :size => 13 %>
-<br /> C: <%= f.text_field :wc, :size => 13 %></p>
+<p>North: <span id="n"></span><br /> S: <%= f.text_field :ns, :size => 13, :onChange => 'update_card(0,0)' %><span id="ns"></span>
+<br /> H: <%= f.text_field :nh, :size => 13, :onChange => 'update_card(1,0)' %><span id="nh"></span>
+<br /> D: <%= f.text_field :nd, :size => 13, :onChange => 'update_card(2,0)' %><span id="nd"></span>
+<br /> C: <%= f.text_field :nc, :size => 13, :onChange => 'update_card(3,0)' %><span id="nc"></span></p>
+<p>East: <span id="e"></span><br /> S: <%= f.text_field :es, :size => 13, :onChange => 'update_card(0,1)' %><span id="es"></span>
+<br /> H: <%= f.text_field :eh, :size => 13, :onChange => 'update_card(1,1)' %><span id="eh"></span>
+<br /> D: <%= f.text_field :ed, :size => 13, :onChange => 'update_card(2,1)' %><span id="ed"></span>
+<br /> C: <%= f.text_field :ec, :size => 13, :onChange => 'update_card(3,1)' %><span id="ec"></span></p>
+<p>South: <span id="s"></span><br /> S: <%= f.text_field :ss, :size => 13, :onChange => 'update_card(0,2)' %><span id="ss"></span>
+<br /> H: <%= f.text_field :sh, :size => 13, :onChange => 'update_card(1,2)' %><span id="sh"></span>
+<br /> D: <%= f.text_field :sd, :size => 13, :onChange => 'update_card(2,2)' %><span id="sd"></span>
+<br /> C: <%= f.text_field :sc, :size => 13, :onChange => 'update_card(3,2)' %><span id="sc"></span></p>
+<p>West: <span id="w"></span><br /> S: <%= f.text_field :ws, :size => 13, :onChange => 'update_card(0,3)' %><span id="ws"></span>
+<br /> H: <%= f.text_field :wh, :size => 13, :onChange => 'update_card(1,3)' %><span id="wh"></span>
+<br /> D: <%= f.text_field :wd, :size => 13, :onChange => 'update_card(2,3)' %><span id="wd"></span>
+<br /> C: <%= f.text_field :wc, :size => 13, :onChange => 'update_card(3,3)' %><span id="wc"></span></p>
