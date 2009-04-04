@@ -1,8 +1,5 @@
-<%= error_messages_for :code %>
-<% form_for :code, :url => {:action => 'edit'} do |f| -%>
-<p>Title: <%= f.text_field :title, :size => 20 %></p>
-<p>Tag: <%= text_field_tag :tag, @tag, :size => 21 %></p>
-<p>Language: <%= f.text_field :language, :size => 17 %></p>
-<p>Code: <br /> <%= f.text_area :code, :cols => 50, :rows => 10 %></p>
+<%= error_messages_for :deal %>
+<% form_for :deal, :url => {:action => 'edit'} do |f| -%>
+<%= render :partial => "form", :locals => {:f => f} %>
 <p><%= submit_tag %></p>
 <% end -%>

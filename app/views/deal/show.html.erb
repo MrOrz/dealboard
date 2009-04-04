@@ -103,6 +103,7 @@
 </tr>
 </table>
 </div>
+<% if @deal.dda.n -%>
 <table class="doubledummy">
 <tr><td>&nbsp;</td><td>♣</td><td>♦</td><td>♥</td><td>♠</td><td>NT</td></tr>
 <tr><td>N</td><% @deal.dda.n.split.each do |s| -%>
@@ -118,7 +119,7 @@
 <td><%= s %></td>
 <% end -%></tr>
 </table>
-
+<% end -%>
 <blockquote>
 <% if @deal.comments.count > 0 -%>
 <p id="notice"><%= @deal.comments.count %> comment(s)</p>

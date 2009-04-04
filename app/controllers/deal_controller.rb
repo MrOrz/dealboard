@@ -32,10 +32,10 @@ class DealController < ApplicationController
     if request.post?
       @deal = current_user.deals.build(params[:deal])
       @deal.tag_list = params[:tag]
-      @dda = @deal.dda.create
-      @dda.generate
-      #@deal.url = @deal.to_url
       if @deal.save
+        @dda = Dda.create(:deal => @deal)
+        # @dda.generate
+        MiddleMan.worker(:ddaw_worker).enq_execdda(:arg => @dda, :job_key => @dda.id.to_s)
         flash[:notice] = "Successfully created..."
         redirect_to :action => "show", :id => @deal.id
       else
@@ -45,21 +45,20 @@ class DealController < ApplicationController
   end
 
   def edit
-    @deal = current_user.deals.find_by_url(params[:id])
+    @deal = current_user.deals.find(params[:id])
     @title = "Edit::#{@deal.title}"
     @tag = @deal.tag_list
     if request.post?
       @deal.update_attributes(params[:deal])
       @deal.tag_list = params[:tag]
-      @deal.url = @deal.to_url
       @deal.save!
       flash[:notice] = "Successfully edited..."
-      redirect_to :action => "show", :id => @deal.url
+      redirect_to :action => "show", :id => @deal.id
     end
   end
 
   def delete
-    @deal = current_user.deals.find_by_url(params[:id])
+    @deal = current_user.deals.find(params[:id])
     @deal.destroy
     flash[:notice] = "Successfully deleted..."
     redirect_to :action => "list"
