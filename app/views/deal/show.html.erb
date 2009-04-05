@@ -111,16 +111,16 @@
 <tr><td>&nbsp;</td><td><span class="blacksuit">♣</span></td><td><span class="redsuit">♦</span></td>
 <td><span class="redsuit">♥</span></td><td><span class="blacksuit">♠</span></td><td>NT</td></tr>
 <tr><td>N</td><% @deal.dda.n.split.each do |s| -%>
-<td><%= s %></td>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
 <% end -%></tr>
 <tr><td>S</td><% @deal.dda.s.split.each do |s| -%>
-<td><%= s %></td>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
 <% end -%></tr>
 <tr><td>E</td><% @deal.dda.e.split.each do |s| -%>
-<td><%= s %></td>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
 <% end -%></tr>
 <tr><td>W</td><% @deal.dda.w.split.each do |s| -%>
-<td><%= s %></td>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
 <% end -%></tr>
 </table></p>
 <% end -%>
