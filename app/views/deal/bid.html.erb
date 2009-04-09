@@ -1,0 +1,11 @@
+<% content_for :header do -%>
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag "deal/bidding" %>
+<% end -%>
+<%= error_messages_for :bid %>
+<% form_for :bid, :url => {:action => 'bid', :id => params[:id]} do |f| -%>
+<p><span id="key">Bidding Sequence:</span></p>
+<p><span id="msg"></span></p>
+<%= f.text_area :seq, :col => 12, :row => 5 %>
+<p><%= submit_tag %></p>
+<% end -%>

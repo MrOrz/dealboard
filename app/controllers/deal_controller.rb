@@ -6,6 +6,20 @@ class DealController < ApplicationController
     redirect_to :action => "list"
   end
 
+  def bid
+    @deal = Deal.find(params[:id])
+    if request.post?
+      @bid = current_user.bids.build(params[:bid])
+      @bid.deal_id = @deal.id
+      if @bid.save
+        flash[:notice] = "Successfully created bidding sequence..."
+        redirect_to :action => "show", :id => params[:id]
+      else
+        render :action => "show"
+      end
+    end
+  end
+
   def show
     @deal = Deal.find(params[:id])
     @title = @deal.title
@@ -33,9 +47,6 @@ class DealController < ApplicationController
       @deal = current_user.deals.build(params[:deal])
       @deal.tag_list = params[:tag]
       if @deal.save
-        @dda = Dda.create(:deal => @deal)
-        # @dda.generate
-        MiddleMan.worker(:ddaw_worker).enq_execdda(:arg => @dda, :job_key => @dda.id.to_s)
         flash[:notice] = "Successfully created..."
         redirect_to :action => "show", :id => @deal.id
       else

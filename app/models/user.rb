@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   
   has_many :deals
   has_many :comments
+  has_many :bids
   acts_as_tagger
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

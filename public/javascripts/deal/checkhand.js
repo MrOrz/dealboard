@@ -9,6 +9,11 @@ $(document).ready(function(e){
     }
     return true;
   });
+  for(var i=0; i<4; ++i)
+    for(var j=0; j<4; ++j)
+      $(fields[i][j]).bind("keydown",{i: i, j: j}, function(e){
+        update_card(e.data.i,e.data.j); 
+      });
 });
 
 var fields = [['#deal_ns', '#deal_es', '#deal_ss', '#deal_ws'],
