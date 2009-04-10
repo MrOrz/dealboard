@@ -1,8 +1,9 @@
 $(document).ready(function(e){
-  $('#bid[seq]').keydown(check_seq);
+  $('#bid_seq').keydown(check_seq);
 });
 
 function valid_bid(s) {
+  if(/[1-7][CDHSN]/.test(s)) return 1;
   if(/[1-7][CDHSN]/.test(s)) return 1;
   if(/P|X|XX/.test(s)) return 2;
   return -1;
@@ -20,8 +21,8 @@ function suff(s, t) {
 function check_seq() {
   $('#msg').html('');
   var doubled = false, redoubled = false, last = "", pass = 0, lastpos = 0;
-  var t = $('#bid[seq]').val().split("-");
-  for(var i = 0; i<t.size(); ++i) {
+  var t = $('#bid_seq').val().split("-");
+  for(var i = 0; i<t.length; ++i) {
     var nt = valid_bid(t[i]);
     if(nt < 0) { $('#msg').html('Not a valid bid.'); return; }
     if(nt == 1) {
@@ -30,7 +31,7 @@ function check_seq() {
       redouble = false;
       lastpos = i % 4;
       if(!(last == ""))
-        if(!suff(last, t[i]) { $('#msg').html('Insufficient bid.'); return; }
+        if(!suff(last, t[i])) { $('#msg').html('Insufficient bid.'); return; }
       last = t[i];
     } else {
       if(t[i] == "P") {

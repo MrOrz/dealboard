@@ -7,10 +7,24 @@ class Deal < ActiveRecord::Base
   
   validates_presence_of :title
   
-  def before_save
-    dda = Dda.create(:deal => @deal)
-    MiddleMan.worker(:ddaw_worker).enq_execdda(:arg => dda, :job_key => dda.id.to_s)
-    [self.ns, self.nh, self.nd, self.nc, self.ws, self.wh, self.wd, self.wc, self.ss, self.sh, self.sd, self.sc, self.es, self.eh, self.ed, self.ec].each {|s| s = sort_card(s)}
+  def sort
+    self.ns = self.sort_card(self.ns)
+    self.nh = self.sort_card(self.nh)
+    self.nd = self.sort_card(self.nd)
+    self.nc = self.sort_card(self.nc)
+    self.es = self.sort_card(self.es)
+    self.eh = self.sort_card(self.eh)
+    self.ed = self.sort_card(self.ed)
+    self.ec = self.sort_card(self.ec)
+    self.ss = self.sort_card(self.ss)
+    self.sh = self.sort_card(self.sh)
+    self.sd = self.sort_card(self.sd)
+    self.sc = self.sort_card(self.sc)
+    self.ws = self.sort_card(self.ws)
+    self.wh = self.sort_card(self.wh)
+    self.wd = self.sort_card(self.wd)
+    self.wc = self.sort_card(self.wc)
+    self.save
   end
   
   def to_url

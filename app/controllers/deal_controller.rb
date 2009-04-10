@@ -47,6 +47,9 @@ class DealController < ApplicationController
       @deal = current_user.deals.build(params[:deal])
       @deal.tag_list = params[:tag]
       if @deal.save
+        @deal.sort
+        @dda = Dda.create(:deal => @deal)
+        MiddleMan.worker(:ddaw_worker).enq_execdda(:arg => @dda, :job_key => @dda.id.to_s)
         flash[:notice] = "Successfully created..."
         redirect_to :action => "show", :id => @deal.id
       else
