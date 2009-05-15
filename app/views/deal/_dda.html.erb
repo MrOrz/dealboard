@@ -1,0 +1,17 @@
+<p><span id="key">Double Dummy Analysis:</span>
+<table class="doubledummy">
+<tr><td>&nbsp;</td><td><span class="blacksuit">♣</span></td><td><span class="redsuit">♦</span></td>
+<td><span class="redsuit">♥</span></td><td><span class="blacksuit">♠</span></td><td>NT</td></tr>
+<tr><td>N</td><% d.n.split.each do |s| -%>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
+<% end -%></tr>
+<tr><td>S</td><% d.s.split.each do |s| -%>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
+<% end -%></tr>
+<tr><td>E</td><% d.e.split.each do |s| -%>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
+<% end -%></tr>
+<tr><td>W</td><% d.w.split.each do |s| -%>
+<td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
+<% end -%></tr>
+</table></p>
