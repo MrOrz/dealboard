@@ -8,25 +8,14 @@ class Deal < ActiveRecord::Base
   validates_presence_of :title
   
   def sort
-    self.ns = self.sort_card(self.ns)
-    self.nh = self.sort_card(self.nh)
-    self.nd = self.sort_card(self.nd)
-    self.nc = self.sort_card(self.nc)
-    self.es = self.sort_card(self.es)
-    self.eh = self.sort_card(self.eh)
-    self.ed = self.sort_card(self.ed)
-    self.ec = self.sort_card(self.ec)
-    self.ss = self.sort_card(self.ss)
-    self.sh = self.sort_card(self.sh)
-    self.sd = self.sort_card(self.sd)
-    self.sc = self.sort_card(self.sc)
-    self.ws = self.sort_card(self.ws)
-    self.wh = self.sort_card(self.wh)
-    self.wd = self.sort_card(self.wd)
-    self.wc = self.sort_card(self.wc)
+    self.n = self.n.split.each {|i| i = sort_card(i) }.join(" ")
+    self.e = self.e.split.each {|i| i = sort_card(i) }.join(" ")
+    self.s = self.s.split.each {|i| i = sort_card(i) }.join(" ")
+    self.w = self.w.split.each {|i| i = sort_card(i) }.join(" ")
     self.save
   end
-  
+
+private  
   def to_url
     self.title.gsub(/ /,'-')
   end

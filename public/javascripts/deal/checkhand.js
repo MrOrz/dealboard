@@ -1,29 +1,21 @@
 $(document).ready(function(e){
   $('form').submit(function(){
     for(var i=0; i<4; ++i)
-      update_card(i, i);
+      update_card(i);
     for(var i=0; i<4; ++i){
       for(var j=0; j<4; ++j) 
-        if($(fields[i][j]).val().length == 0) return false;
+        if($(fields[i]).split(' ')[j].val().length == 0) return false;
       if(!card_st[i] || !pos_st[i]) return false;
     }
     return true;
   });
   for(var i=0; i<4; ++i)
-    for(var j=0; j<4; ++j)
-      $(fields[i][j]).bind("keydown",{i: i, j: j}, function(e){
-        update_card(e.data.i,e.data.j); 
-      });
+    $(fields[i]).bind("keydown",{i: i}, function(e){
+      update_card(e.data.i); 
+    });
 });
 
-var fields = [['#deal_ns', '#deal_es', '#deal_ss', '#deal_ws'],
-['#deal_nh', '#deal_eh', '#deal_sh', '#deal_wh'],
-['#deal_nd', '#deal_ed', '#deal_sd', '#deal_wd'],
-['#deal_nc', '#deal_ec', '#deal_sc', '#deal_wc']];
-var msgf = [['#ns', '#es', '#ss', '#ws'],
-['#nh', '#eh', '#sh', '#wh'],
-['#nd', '#ed', '#sd', '#wd'],
-['#nc', '#ec', '#sc', '#wc']];
+var fields = ['#deal_n', '#deal_e', '#deal_s', '#deal_w'];
 var mpos = ['#n', '#e', '#s', '#w'];
 var card_st = [false, false, false, false];
 var pos_st = [false, false, false, false];
@@ -41,10 +33,10 @@ function validcard(s) {
 }
 
 function update_hand(w) {
-  var num = 0;
-  $(mpos[w]).html("");
+  var num = 0, hand = $(fields[i]).split(' ');
   for(var i=0; i<4; ++i) {
-    if($(fields[i][w]).val() != '-') num += $(fields[i][w]).val().length;
+    if(hand[w].val() != '-') 
+      num += hand[w].val().length;
   }
   if(num == 13) {
     pos_st[w] = true;
@@ -55,29 +47,30 @@ function update_hand(w) {
   }
 }
 
-function update_card(v, w) {
+function update_card(v) {
   card_st[v] = true;
   card = new Array(13);
   for(var i=0; i<13; ++i) card[i] = false;
   for(var j=0; j<4; ++j) {
-    $(msgf[v][j]).html("");
-    if($(fields[v][j]).val() != '-') {
-      for(var i=0; i<$(fields[v][j]).val().length; ++i) {
-        var s = validcard($(fields[v][j]).val()[i]);
+    $(mpos[j]).html("");
+    var nowj = $(fields[v]).split(' ')[j].val();
+    if(nowj != '-') {
+      for(var i=0; i<nowj.length; ++i) {
+        var s = validcard(nowj[i]);
         if(s >= 0) {
           if(card[s]) {
-            $(msgf[v][j]).html("At least one card is duplicated.");
+            $(mpos[j]).html("At least one card is duplicated.");
             card_st[v] = false;
           } else {
             card[s] = true;
           }        
         } else {
-          $(msgf[v][j]).html("Not a card!");
+          $(mpos[j]).html("Not a card!");
           card_st[v] = false;
         }
       }
-      if(card_st[v]) $(msgf[v][j]).html("");
+      if(card_st[v]) $(mpos[v][j]).html("");
     }
   }
-  update_hand(w);
+  update_hand(v);
 }
