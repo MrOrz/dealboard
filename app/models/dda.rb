@@ -5,10 +5,10 @@ class Dda < ActiveRecord::Base
     File.open("#{RAILS_ROOT}/lib/dd.tcl", "w") do |f| 
       f.print <<STOP
 set diagram {
-  {#{self.deal.ns} #{self.deal.nh} #{self.deal.nd} #{self.deal.nc}} 
-  {#{self.deal.es} #{self.deal.eh} #{self.deal.ed} #{self.deal.ec}}
-  {#{self.deal.ss} #{self.deal.sh} #{self.deal.sd} #{self.deal.sc}}
-  {#{self.deal.ws} #{self.deal.wh} #{self.deal.wd} #{self.deal.wc}}
+  {#{self.deal.n}} 
+  {#{self.deal.e}}
+  {#{self.deal.s}}
+  {#{self.deal.w}}
 }
 foreach hand {north east south west} {
   foreach denom {clubs diamonds hearts spades notrump} {

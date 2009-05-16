@@ -4,7 +4,7 @@
 <p><span id="key">Title:</span> <%= @deal.title %><br />
 <span id="key">User:</span> <%= link_to @deal.user.login, :action => 'user', :id => @deal.user.login %><br />
 <span id="key">Tag:</span> <% for t in @deal.tags -%>
-<%= link_to t.name, :action => "tag", :id => t.name %> 
+<%= link_to t.name, :action => "tag", :id => t.name %>
 <% end -%><br /></p>
 <p style="text-align: right;">
 <% if current_user == @deal.user -%>
@@ -15,13 +15,15 @@
 <% if @deal.dda.n -%>
 <%= render :partial => "dda", :locals => {:d => @deal} %>
 <% end -%>
+<% if @deal.bids.count > 0 -%>
+<p><span id="key">Bidding Sequence</span><p style="text-align: right;">
+<%= link_to "Create", :action => 'bid', :id => params[:id] %></p>
+<%= render :partial => 'bid', :collection => @deal.bids %>
+<% end -%>
 <blockquote>
 <% if @deal.comments.count > 0 -%>
 <p id="notice"><%= @deal.comments.count %> comment(s)</p>
-<% for c in @deal.comments -%>
-<p><span id="key">User:</span> <%= link_to c.user.login, :action => "user", :id => c.user.login %>&nbsp;&nbsp;&nbsp;<span id="key">User:</span><%= c.created_at.to_s %><% if c.user == current_user %>&nbsp;&nbsp;&nbsp;<%= link_to "Delete", :action => "deletecomment", :id => c.id %><% end %>
-<div id="comment"><%= simple_format(h(c.body)) %></div>
-<% end -%>
+<%= render :partial => "comment", :collection => @deal.comments %>
 <% else -%>
 <p id="notice">No comments yet.</p>
 <% end -%>
@@ -35,3 +37,4 @@
 <% else -%>
 <p id="notice">Please <%= link_to "log in", :controller => "account", :action => "login" %> to comment on this deal.</p>
 <% end -%></blockquote>
+

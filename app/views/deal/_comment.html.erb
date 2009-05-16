@@ -1,0 +1,7 @@
+<p><span id="key">User:</span> 
+<%= link_to comment.user.login, :action => "user", :id => comment.user.login %>&nbsp;&nbsp;&nbsp;
+<span id="key">Time:</span> <%= comment.created_at.to_s %>
+<% if comment.user == current_user -%>
+&nbsp;&nbsp;&nbsp;<%= link_to "Delete", :action => "deletecomment", :id => comment.id %>
+<% end -%>
+<div id="comment"><%= simple_format(h(comment.body)) %></div></p>

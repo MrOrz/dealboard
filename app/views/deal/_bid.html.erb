@@ -1,0 +1,23 @@
+<% s, t = dealer_delay(bid.deal.dealer) -%>
+<p><span id="key">User: </span><%= bid.user.login %><br />
+<table class="auction">
+<tr class="heading">
+<td>South</td>
+<td>West</td>
+<td>North</td>
+<td>East</td>
+</tr><tr>
+<%= s %>
+<% for i in bid.seq.split('-') -%>
+  <% if t % 4 == 0 -%>
+</tr><tr>
+  <% end -%>
+<td><%= suit(i) %></td>
+  <% t = t + 1 -%>
+<% end -%>
+<% while t % 4 != 0 -%>
+<td></td>
+<% t = t + 1 -%>
+<% end -%>
+</tr></table></p>
+
