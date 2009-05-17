@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
   # say something nice, you goof!  something sweet.
   layout 'deal'
-  
+
   def index
     redirect_to(:action => 'signup') unless logged_in? || User.count > 0
   end
@@ -29,12 +29,13 @@ class AccountController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end
-  
+
   def logout
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default(:controller => 'code', :action => 'list')
+    redirect_back_or_default(:controller => 'deal', :action => 'list')
   end
 end
+

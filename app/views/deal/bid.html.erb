@@ -2,10 +2,12 @@
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag "deal/bidding" %>
 <% end -%>
-<%= error_messages_for :bid %>
+<h1>Create a Bidding Sequence</h1>
+<%= error_messages_for :bid, :class => 'error' %>
 <% form_for :bid, :url => {:action => 'bid', :id => params[:id]} do |f| -%>
-<p><span id="key">Bidding Sequence:</span></p>
+<p>Seperate the bids with "-", using P, 1C, 2S, 3N, X, XX for notation.</p>
 <p><span id="msg"></span>&nbsp;</p>
 <%= f.text_area :seq, :col => 12, :row => 5 %>
 <p><%= submit_tag %></p>
 <% end -%>
+

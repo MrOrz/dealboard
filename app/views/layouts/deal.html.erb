@@ -3,20 +3,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>DealBoard::<%=h @title %></title>
-<%= stylesheet_link_tag 'main' %>
-<%= yield :header %>
+<link type="text/css" rel="stylesheet" href="/stylesheets/default.css" />
+<%= yield :header -%>
 </head>
 <body>
-<p><%= link_to "List", :action => "list" %>&nbsp;&nbsp;&nbsp;
-<% if logged_in? -%>
-<%= link_to "Create", :action => "create" %>&nbsp;&nbsp;&nbsp;
-<%= link_to "Logout", :controller => "account", :action => "logout" %>
-<% else -%>
-Not logged in? You can <%= link_to "log in", :controller => "account", :action => "login" %> or <%= link_to "sign up", :controller => "account", :action => "signup" %>
-<% end -%></p>
-<% if flash[:notice] -%>
-<p id="notice"><%= flash[:notice] %></p>
-<% end -%>
-<%= yield :layout %>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+      <h1><%= link_to "DealBoard", :controller => "deal", :action => "list" %></h1>
+      <h2>Where Amazing Recorded</h2>
+    </div>
+    <div id="menu">
+      <ul>
+        <li><%= link_to "List", :controller => "deal", :action => "list" %></li>
+        <% if logged_in? -%>
+        <li><%= link_to "Create", :controller => "deal", :action => "create" %></li>
+        <li><%= link_to "Logout", :controller => "account", :action => "logout" %></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+  <div id="page">
+    <div id="content">
+      <div id="show">
+      <% if flash[:notice] -%>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end -%>
+      <%= yield :layout %>
+      </div>
+    </div>
+    <div id="sidebar">
+      <ul>
+        <li id="submenu">
+          <h2> Login / Signup </h2>
+          <ul>
+            <% if logged_in? -%>
+            <li>Welcome! <%=h current_user.login %></li>
+            <% else -%>
+            <li>No account? <%= link_to "Sign up!", :controller => "account", :action => "signup" %></li>
+            <li><% form_tag :controller => "account", :action => "login" do -%>
+              <p><label for="login">Login</label><br/>
+              <%= text_field_tag 'login' %></p>
+              <p><label for="password">Password</label><br/>
+              <%= password_field_tag 'password' %></p>
+              <p><%= submit_tag 'Log in' %></p>
+            <% end -%></li>
+            <% end -%>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both; height: 1px"></div>
+  </div>
+  <div id="footer"></div>
+</div>
 </body>
 </html>
+

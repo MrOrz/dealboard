@@ -1,11 +1,11 @@
 <% content_for :header do -%>
 <%= stylesheet_link_tag 'deal' %>
 <% end -%>
-<p><span id="key">Title:</span> <%= @deal.title %><br />
-<span id="key">User:</span> <%= link_to @deal.user.login, :action => 'user', :id => @deal.user.login %><br />
-<span id="key">Tag:</span> <% for t in @deal.tags -%>
+<h1><%=h @deal.title %></h1>
+<h2>Posted by <%= link_to h(@deal.user.login), :action => 'user', :id => @deal.user.login %> and tagged with
+<% for t in @deal.tags -%>
 <%= link_to t.name, :action => "tag", :id => t.name %>
-<% end -%><br /></p>
+<% end -%></h2>
 <p style="text-align: right;">
 <% if current_user == @deal.user -%>
 &nbsp;&nbsp;&nbsp;<%= link_to "Edit", :action => "edit", :id => @deal.id %>&nbsp;&nbsp;&nbsp;
