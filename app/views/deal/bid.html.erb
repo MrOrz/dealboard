@@ -1,9 +1,11 @@
 <% content_for :header do -%>
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag "deal/bidding" %>
+<%= stylesheet_link_tag 'deal' %>
 <% end -%>
 <h1>Create a Bidding Sequence</h1>
 <%= error_messages_for :bid, :class => 'error' %>
+<%= render :partial => "carding", :locals => {:d => @deal} %>
 <% form_for :bid, :url => {:action => 'bid', :id => params[:id]} do |f| -%>
 <p>Seperate the bids with "-", using P, 1C, 2S, 3N, X, XX for notation.</p>
 <p><span id="msg"></span>&nbsp;</p>

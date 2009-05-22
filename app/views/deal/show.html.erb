@@ -2,10 +2,11 @@
 <%= stylesheet_link_tag 'deal' %>
 <% end -%>
 <h1><%=h @deal.title %></h1>
-<h2>Posted by <%= link_to h(@deal.user.login), :action => 'user', :id => @deal.user.login %> and tagged with
+<p>Posted by <%= link_to h(@deal.user.login), :action => 'user', :id => @deal.user.login %>
+<br />Tagged with
 <% for t in @deal.tags -%>
 <%= link_to t.name, :action => "tag", :id => t.name %>
-<% end -%></h2>
+<% end -%></p>
 <p style="text-align: right;">
 <% if current_user == @deal.user -%>
 &nbsp;&nbsp;&nbsp;<%= link_to "Edit", :action => "edit", :id => @deal.id %>&nbsp;&nbsp;&nbsp;
@@ -13,26 +14,29 @@
 <% end -%></p>
 <%= render :partial => "carding", :locals => {:d => @deal} %>
 <% if @deal.dda.n -%>
-<%= render :partial => "dda", :locals => {:d => @deal} %>
+<%= render :partial => "dda", :locals => {:d => @deal.dda} %>
 <% end -%>
+<h2>Bidding Sequence</h2>
 <% if @deal.bids.count > 0 -%>
-<p><span id="key">Bidding Sequence</span><p style="text-align: right;">
+<p><p style="text-align: right;">
 <%= link_to "Create", :action => 'bid', :id => params[:id] %></p>
 <%= render :partial => 'bid', :collection => @deal.bids %>
+<% else -%>
+<%= link_to "Create a new bidding sequence", :action => 'bid', :id => params[:id] %>
 <% end -%>
 <blockquote>
 <% if @deal.comments.count > 0 -%>
-<p id="notice"><%= @deal.comments.count %> comment(s)</p>
+<h2><%= @deal.comments.count %> comment(s)</h2>
 <%= render :partial => "comment", :collection => @deal.comments %>
 <% else -%>
-<p id="notice">No comments yet.</p>
+<h2>No comments yet</h2>
 <% end -%>
 <% if logged_in? -%>
 <p id="notice">You can leave a message. User: <%= current_user.login %></p>
-<%= error_messages_for :comment %>
+<%= error_messages_for :comment, :class => 'error' %>
 <% form_for :comment, :url => {:action => 'show', :id => params[:id]} do |f| -%>
-<%= f.text_area :body, :rows => "5" %>
-<%= submit_tag %>
+<%= f.text_area :body, :rows => "5" %><br />
+<%= submit_tag "Comment!" %>
 <% end -%>
 <% else -%>
 <p id="notice">Please <%= link_to "log in", :controller => "account", :action => "login" %> to comment on this deal.</p>

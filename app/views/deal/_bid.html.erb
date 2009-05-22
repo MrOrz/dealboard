@@ -1,12 +1,11 @@
 <% s, t = dealer_delay(bid.deal.dealer) -%>
-<p><span id="key">User: </span><%= bid.user.login %><br />
 <table class="auction">
-<tr class="heading">
+<thead class="heading">
 <td>South</td>
 <td>West</td>
 <td>North</td>
 <td>East</td>
-</tr><tr>
+</thead><tr>
 <%= s %>
 <% for i in bid.seq.split('-') -%>
   <% if t % 4 == 0 -%>
@@ -19,5 +18,9 @@
 <td></td>
 <% t = t + 1 -%>
 <% end -%>
-</tr></table></p>
+</tr><tr><td colspan="4"><span style="float: left;">Suggested by <%=h bid.user.login %></span>
+<% if current_user == bid.user -%>
+<span style="float: right;"><%= link_to 'Delete', :action => 'biddelete', :id => bid.id %></span>
+<% end -%>
+</td></tr></table>
 
