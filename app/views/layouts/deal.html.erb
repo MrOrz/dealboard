@@ -54,10 +54,28 @@
         <li id="tagcloud">
           <h2> Tag cloud </h2>
           <div id="cloud_area">
-            <% tag_cloud Tag.counts, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7) do |tag, css_class| %>
-              <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-            <% end %>
+          <% tag_cloud Tag.counts, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7) do |tag, css_class| -%>
+            <%= link_to h(tag.name), { :controller => 'deal', :action => :tag, :id => tag.name }, :class => css_class %>
+          <% end -%>
           </div>
+        </li>
+        <li id="recentdeal">
+          <h2> Recent Deals </h2>
+          <ul>
+          <% Deal.find(:all, :limit => 5).each do |d| -%>
+            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.id %> @
+            <%= link_to h(d.title), :controller => 'deal', :action => 'show', :id => d.id %></li>
+          <% end -%>
+          </ul>
+        </li>
+        <li id="recentcomment">
+          <h2> Recent Comments </h2>
+          <ul>
+          <% Comment.find(:all, :limit => 5).each do |d| -%>
+            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.id %> @
+            <%= link_to h(d.deal.title), :controller => 'deal', :action => 'show', :id => d.id %></li>
+          <% end -%>
+          </ul>
         </li>
       </ul>
     </div>

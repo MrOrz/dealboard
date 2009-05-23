@@ -86,7 +86,7 @@ class DealController < ApplicationController
   end
 
   def tag
-    @deal = Deal.find_tagged_with(params[:id], :on => :tags).paginate :page => params[:page], :order => 'updated_at DESC'
+    @deal = Deal.find_tagged_with(params[:id]).paginate :page => params[:page], :order => 'updated_at DESC'
     @word = "Deals tagged with #{params[:id]}"
     @title = "Tag::#{params[:id]}"
     render :action => 'list'
