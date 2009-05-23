@@ -11,7 +11,7 @@ $(document).ready(function(e){
   });
   for(var i=0; i<4; ++i)
     $(fields[i]).bind("keydown",{i: i}, function(e){
-      update_card(e.data.i);
+      update_hand(e.data.i);
     });
 });
 
@@ -33,6 +33,7 @@ function validcard(s) {
 }
 
 function update_hand(w) {
+  $(mpos[w]).html("");
   var num = 0, hand = $(fields[w]).val().split(' ');
   for(var i=0; i<hand.length; ++i) {
     if(hand[i] != '-') num += hand[i].length;
@@ -50,27 +51,30 @@ function update_card(v) {
   card_st[v] = true;
   card = new Array(13);
   for(var i=0; i<13; ++i) card[i] = false;
-  $(mpos[v]).html("");
-  for(var j=0; j<$(fields[v]).val().split(' ').length; ++j) {
-    var nowj = $(fields[v]).val().split(' ')[j];
+  for(var j=0; j<4; ++j) {
+    if($(fields[j]).val().split(' ').length != 4) {
+      $(mpos[v]).html("Not enough!");
+      card_st[v] = false;
+      return;
+    }
+    var nowj = $(fields[j]).val().split(' ')[v];
     if(nowj != '-') {
       for(var i=0; i<nowj.length; ++i) {
         var s = validcard(nowj[i]);
         if(s >= 0) {
           if(card[s]) {
-            $(mpos[v]).html("At least one card is duplicated.");
+            $(mpos[j]).html("At least one card is duplicated.");
             card_st[v] = false;
           } else {
             card[s] = true;
           }
         } else {
-          $(mpos[v]).html("Not a card!");
+          $(mpos[j]).html("Not a card!");
           card_st[v] = false;
         }
       }
-      if(card_st[v]) $(mpos[v]).html("");
+      //if(card_st[v]) $(mpos[v]).html("");
     }
   }
-  update_hand(v);
 }
 
