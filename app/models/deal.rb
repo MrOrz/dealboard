@@ -8,10 +8,18 @@ class Deal < ActiveRecord::Base
   validates_presence_of :title
 
   def sort
-    self.n = self.n.upcase.split.each {|i| i = sort_card(i) }.join(" ")
-    self.e = self.e.upcase.split.each {|i| i = sort_card(i) }.join(" ")
-    self.s = self.s.upcase.split.each {|i| i = sort_card(i) }.join(" ")
-    self.w = self.w.upcase.split.each {|i| i = sort_card(i) }.join(" ")
+    k = Array.new
+    self.n.upcase.split.each {|i| k << sort_card(i) }
+    self.n = k.join(" ")
+    k.clear
+    self.e.upcase.split.each {|i| k << sort_card(i) }
+    self.e = k.join(" ")
+    k.clear
+    self.s.upcase.split.each {|i| k << sort_card(i) }
+    self.s = k.join(" ")
+    k.clear
+    self.w.upcase.split.each {|i| k << sort_card(i) }
+    self.w = k.join(" ")
     self.save
   end
 

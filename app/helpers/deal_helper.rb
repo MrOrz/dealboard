@@ -5,9 +5,9 @@ module DealHelper
         return "", 0
       when "E"
         return "<td></td>", 1
-      when "W"
-        return "<td></td><td></td>", 2
       when "S"
+        return "<td></td><td></td>", 2
+      when "W"
         return "<td></td><td></td><td></td>", 3
     end
   end

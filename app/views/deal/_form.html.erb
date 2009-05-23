@@ -2,7 +2,7 @@
 <p><label for="deal_title">Title</label><br />
 <%= f.text_field :title, :size => 20, :class => "title" %></p>
 <p><label for="deal_tag">Tag (seperate with comma)</label><br />
-<%= text_field_tag :tag, nil, :size => 21, :class => "text" %></p>
+<%= text_field_tag :tag, t, :size => 21, :class => "text" %></p>
 </div><div id="group2" style="float: left; width: 40%;">
 <p><label for="deal_dealer">Dealer</label><br />
 <%= f.select :dealer, ['N', 'E', 'S', 'W'] %></p>
