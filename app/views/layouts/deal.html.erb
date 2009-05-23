@@ -63,7 +63,7 @@
           <h2> Recent Deals </h2>
           <ul>
           <% Deal.find(:all, :limit => 5).each do |d| -%>
-            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.id %> @
+            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.login %> @
             <%= link_to h(d.title), :controller => 'deal', :action => 'show', :id => d.id %></li>
           <% end -%>
           </ul>
@@ -72,8 +72,8 @@
           <h2> Recent Comments </h2>
           <ul>
           <% Comment.find(:all, :limit => 5).each do |d| -%>
-            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.id %> @
-            <%= link_to h(d.deal.title), :controller => 'deal', :action => 'show', :id => d.id %></li>
+            <li><%= link_to h(d.user.login), :controller => 'deal', :action => 'user', :id => d.user.login %> @
+            <%= link_to h(d.deal.title), :controller => 'deal', :action => 'show', :id => d.deal.id %></li>
           <% end -%>
           </ul>
         </li>
