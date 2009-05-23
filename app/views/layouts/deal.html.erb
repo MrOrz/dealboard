@@ -51,6 +51,14 @@
             <% end -%>
           </ul>
         </li>
+        <li id="tagcloud">
+          <h2> Tag cloud </h2>
+          <div id="cloud_area">
+            <% tag_cloud Tag.counts, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7) do |tag, css_class| %>
+              <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+            <% end %>
+          </div>
+        </li>
       </ul>
     </div>
     <div style="clear: both; height: 1px"></div>
