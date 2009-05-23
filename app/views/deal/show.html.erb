@@ -18,13 +18,12 @@
 <% end -%>
 <h2>Bidding Sequence</h2>
 <% if @deal.bids.count > 0 -%>
-<p><p style="text-align: right;">
+<p style="text-align: right;">
 <%= link_to "Create", :action => 'bid', :id => params[:id] %></p>
 <%= render :partial => 'bid', :collection => @deal.bids %>
 <% else -%>
-<%= link_to "Create a new bidding sequence", :action => 'bid', :id => params[:id] %>
+<p><%= link_to "Create a new bidding sequence", :action => 'bid', :id => params[:id] %></p>
 <% end -%>
-<blockquote>
 <% if @deal.comments.count > 0 -%>
 <h2><%= @deal.comments.count %> comment(s)</h2>
 <%= render :partial => "comment", :collection => @deal.comments %>
@@ -32,13 +31,14 @@
 <h2>No comments yet</h2>
 <% end -%>
 <% if logged_in? -%>
-<p id="notice">You can leave a message. User: <%= current_user.login %></p>
+<div style="width: 70%; margin-left: auto; margin-right: auto;">
+You can leave a message. User: <%= current_user.login %>
 <%= error_messages_for :comment, :class => 'error' %>
 <% form_for :comment, :url => {:action => 'show', :id => params[:id]} do |f| -%>
 <%= f.text_area :body, :rows => "5" %><br />
-<%= submit_tag "Comment!" %>
+<%= submit_tag "Comment!" %></div>
 <% end -%>
 <% else -%>
 <p id="notice">Please <%= link_to "log in", :controller => "account", :action => "login" %> to comment on this deal.</p>
-<% end -%></blockquote>
+<% end -%>
 

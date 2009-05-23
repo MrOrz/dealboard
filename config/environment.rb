@@ -33,7 +33,7 @@ Rails::Initializer.run do |config|
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
-  config.time_zone = 'UTC'
+  config.time_zone = 'Taipei'
   config.action_view.field_error_proc = Proc.new {|html_tag, instance|
 %(<span class="field-with-errors">#{html_tag}</span>)}
 

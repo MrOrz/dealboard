@@ -1,7 +1,7 @@
 class DealController < ApplicationController
-  
-  before_filter :login_required, :only => ['edit', 'create']
-  
+
+  before_filter :login_required, :only => ['edit', 'create', 'bid', 'delete', 'deletecomment', 'deletebid']
+
   def index
     redirect_to :action => "list"
   end
@@ -77,26 +77,35 @@ class DealController < ApplicationController
     flash[:notice] = "Successfully deleted..."
     redirect_to :action => "list"
   end
-  
+
   def user
     @deal = User.find_by_login(params[:id]).deals.paginate :page => params[:page], :order => 'updated_at DESC'
     @word = "Deals by #{params[:id]}"
     @title = "User::#{params[:id]}"
     render :action => 'list'
   end
-  
+
   def tag
     @deal = Deal.find_tagged_with(params[:id], :on => :tags).paginate :page => params[:page], :order => 'updated_at DESC'
     @word = "Deals tagged with #{params[:id]}"
     @title = "Tag::#{params[:id]}"
     render :action => 'list'
   end
-  
+
   def deletecomment
     @comment = current_user.comments.find(params[:id])
     @deal = @comment.deal
     @comment.destroy
     flash[:notice] = "Successfully deleted..."
-    redirect_to :action => "show", :id => @deal.url
+    redirect_to :action => "show", :id => @deal.id
+  end
+
+  def deletebid
+    @bid = current_user.bids.find(params[:id])
+    @deal = @bid.deal
+    @bid.destroy
+    flash[:notive] = "Successfully deleted bidding sequence..."
+    redirect_to :action => "show", :id => @deal.id
   end
 end
+

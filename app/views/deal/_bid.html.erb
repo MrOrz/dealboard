@@ -15,12 +15,12 @@
   <% t = t + 1 -%>
 <% end -%>
 <% while t % 4 != 0 -%>
-<td></td>
+<td>&nbsp;</td>
 <% t = t + 1 -%>
 <% end -%>
 </tr><tr><td colspan="4"><span style="float: left;">Suggested by <%=h bid.user.login %></span>
 <% if current_user == bid.user -%>
-<span style="float: right;"><%= link_to 'Delete', :action => 'biddelete', :id => bid.id %></span>
+<span style="float: right;"><%= link_to 'Delete', :action => 'deletebid', :id => bid.id %></span>
 <% end -%>
-</td></tr></table>
+</td></tr></table><br />
 

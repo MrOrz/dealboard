@@ -299,7 +299,6 @@ a:hover {
 
 table {
   text-align: center;
-  #font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
   font-weight: normal;
   font-size: 11px;
   color: #fff;
@@ -326,6 +325,18 @@ table thead td {
   border-bottom: 2px #fff solid;
   font-size: 12px;
   font-weight: bold;
+}
+
+table.comment {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.comment a {
+  color: #fff;
+  text-decoration: none;
+  font-style: italic;
 }
 
 label       { font-weight: bold; }
