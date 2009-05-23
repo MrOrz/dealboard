@@ -1,7 +1,7 @@
 <h2>Double Dummy Analysis</h2>
 <table class="doubledummy">
-<thead><td>&nbsp;</td><td><span class="blacksuit">♣</span></td><td><span class="redsuit">♦</span></td>
-<td><span class="redsuit">♥</span></td><td><span class="blacksuit">♠</span></td><td>NT</td></thead>
+<thead><td>&nbsp;</td><td><span class="suitsymbol">♣</span></td><td><span class="suitsymbol">♦</span></td>
+<td><span class="suitsymbol">♥</span></td><td><span class="suitsymbol">♠</span></td><td>NT</td></thead>
 <tr><td>N</td><% d.n.split.each do |s| -%>
 <td><%= ((s.to_i - 6) > 0)?(s.to_i - 6).to_s : "-" %></td>
 <% end -%></tr>

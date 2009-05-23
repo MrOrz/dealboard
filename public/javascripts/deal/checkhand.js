@@ -23,12 +23,12 @@ var card_st = [false, false, false, false];
 var pos_st = [false, false, false, false];
 
 function validcard(s) {
-  if(/[AKQJT2-9]/.test(s)) {
-    if(s == 'A') return 12;
-    if(s == 'K') return 11;
-    if(s == 'Q') return 10;
-    if(s == 'J') return 9;
-    if(s == 'T') return 8;
+  if(/[AaKkQqJjTt2-9]/.test(s)) {
+    if(s == 'A'||s == 'a') return 12;
+    if(s == 'K'||s == 'k') return 11;
+    if(s == 'Q'||s == 'q') return 10;
+    if(s == 'J'||s == 'j') return 9;
+    if(s == 'T'||s == 't') return 8;
     return s-2;
   }
   return -1;
