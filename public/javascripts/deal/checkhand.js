@@ -1,7 +1,9 @@
 $(document).ready(function(e){
   $('form').submit(function(){
-    for(var i=0; i<4; ++i)
+    for(var i=0; i<4; ++i){
       update_card(i);
+      update_hand(i);
+    }
     for(var i=0; i<4; ++i){
       for(var j=0; j<4; ++j)
         if($(fields[i]).val().split(' ')[j].length == 0) return false;
@@ -73,7 +75,6 @@ function update_card(v) {
           card_st[v] = false;
         }
       }
-      //if(card_st[v]) $(mpos[v]).html("");
     }
   }
 }
