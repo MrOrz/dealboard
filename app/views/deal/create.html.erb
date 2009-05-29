@@ -5,7 +5,7 @@
 <h1>Create a New Deal</h1>
 <%= error_messages_for :deal, :class => "error" %>
 <% form_for :deal, :url => {:action => 'create'} do |f| -%>
-<%= render :partial => "form", :locals => {:f => f} %>
+<%= render :partial => "form", :locals => {:f => f, :t => ""} %>
 <p><%= submit_tag %></p>
 <% end -%>
 

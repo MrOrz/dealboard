@@ -1,5 +1,10 @@
-<%= error_messages_for :deal %>
+<% content_for :header do -%>
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag "deal/checkhand" %>
+<% end -%>
+<h1>Edit the deal</h1>
+<%= error_messages_for :deal, :class => 'error' %>
 <% form_for :deal, :url => {:action => 'edit'} do |f| -%>
-<%= render :partial => "form", :locals => {:f => f} %>
+<%= render :partial => "form", :locals => {:f => f, :t => @deal.tag_list.join(", ")} %>
 <p><%= submit_tag %></p>
 <% end -%>
