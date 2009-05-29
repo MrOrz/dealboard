@@ -7,8 +7,10 @@
 <div><%= d.dealer %> Dealer</div>
 <div><%= d.vul %> Vulnerable</div>
 </div>
+<% t = d.krp.split -%>
 <% seat.each_index do |i| -%>
 <div class="hand <%= seat[i] %>">
+  <div class="seatname">KRP: <%= t[i] %></div>
   <% card[i].split.each_index do |j| -%>
   <div class="holding">
     <span class="suitsymbol <%= color[j] %>"><%= sym[j] %></span>
@@ -18,3 +20,4 @@
 </div>
 <% end -%>
 </div>
+
