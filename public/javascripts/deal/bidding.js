@@ -1,5 +1,5 @@
 $(document).ready(function(e){
-  $('#bid_seq').keydown(check_seq);
+  $('#bid_seq').keyup(check_seq);
 });
 
 function valid_bid(s) {

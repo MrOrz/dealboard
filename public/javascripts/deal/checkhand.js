@@ -12,7 +12,7 @@ $(document).ready(function(e){
     return true;
   });
   for(var i=0; i<4; ++i)
-    $(fields[i]).bind("keydown",{i: i}, function(e){
+    $(fields[i]).bind("keyup",{i: i}, function(e){
       update_hand(e.data.i);
     });
 });
